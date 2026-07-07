@@ -4,7 +4,17 @@
   align-items: center;
   justify-content: center;
   padding: 24px;
+  transition: background 0.3s ease, color 0.3s ease;
+}
+
+.App.dark {
+  background: linear-gradient(135deg, #111827, #1f2937 45%, #374151);
+  color: #f9fafb;
+}
+
+.App.light {
   background: linear-gradient(135deg, #fff8e1, #ffe082 45%, #ffcc80);
+  color: #111827;
 }
 
 .App-main {
@@ -19,6 +29,24 @@
   text-align: center;
 }
 
+.App.dark .App-card {
+  background: rgba(17, 24, 39, 0.95);
+  color: #f9fafb;
+  box-shadow: 0 20px 45px rgba(0, 0, 0, 0.35);
+}
+
+.App.light .App-card {
+  background: rgba(255, 255, 255, 0.95);
+  color: #111827;
+}
+
+.top-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+}
+
 .eyebrow {
   margin: 0 0 8px;
   color: #d97706;
@@ -27,16 +55,32 @@
   text-transform: uppercase;
 }
 
+.theme-toggle {
+  border: none;
+  border-radius: 999px;
+  padding: 8px 14px;
+  background: #e5e7eb;
+  color: #111827;
+  cursor: pointer;
+  font-weight: 600;
+}
+
+.App.dark .theme-toggle {
+  background: #374151;
+  color: #f9fafb;
+}
+
 h1 {
   margin: 0 0 12px;
-  color: #1f2937;
+  color: inherit;
   font-size: 2rem;
 }
 
 .description {
   margin: 0 auto 20px;
   max-width: 560px;
-  color: #4b5563;
+  color: inherit;
+  opacity: 0.85;
   line-height: 1.6;
 }
 
@@ -71,11 +115,20 @@ h1 {
   background: #fffef7;
 }
 
+.App.dark .lotto-set {
+  background: #1f2937;
+  border-color: #4b5563;
+}
+
 .set-number {
   display: inline-block;
   margin-bottom: 12px;
   color: #92400e;
   font-weight: 700;
+}
+
+.App.dark .set-number {
+  color: #fbbf24;
 }
 
 .numbers {
@@ -99,5 +152,6 @@ h1 {
 
 .placeholder {
   grid-column: 1 / -1;
-  color: #6b7280;
+  color: inherit;
+  opacity: 0.8;
 }

@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useMemo, useState } from 'react';
 import './App.css';
 
 function generateLottoNumbers() {
@@ -13,16 +13,28 @@ function generateLottoSets(count = 5) {
 
 function App() {
   const [lottoSets, setLottoSets] = useState([]);
+  const [theme, setTheme] = useState('dark');
 
   const handleGenerate = () => {
     setLottoSets(generateLottoSets());
   };
 
+  const toggleTheme = () => {
+    setTheme((currentTheme) => (currentTheme === 'dark' ? 'light' : 'dark'));
+  };
+
+  const buttonLabel = useMemo(() => (theme === 'dark' ? '화이트 모드' : '다크 모드'), [theme]);
+
   return (
-    <div className="App">
+    <div className={`App ${theme}`}>
       <main className="App-main">
         <section className="App-card">
-          <p className="eyebrow">오늘의 행운</p>
+          <div className="top-row">
+            <p className="eyebrow">오늘의 행운</p>
+            <button type="button" className="theme-toggle" onClick={toggleTheme}>
+              {buttonLabel}
+            </button>
+          </div>
           <h1>로또 번호 생성기</h1>
           <p className="description">
             버튼을 누르면 5개의 로또 번호 세트가 한 번에 생성됩니다.
